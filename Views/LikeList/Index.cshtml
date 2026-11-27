@@ -33,6 +33,14 @@
     </div>
 }
 
+@if (TempData["ErrorMessage"] is string errorMessage)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @errorMessage
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="關閉"></button>
+    </div>
+}
+
 <div class="row g-3 mb-4">
     <div class="col-12 col-md-4">
         <div class="card h-100">
@@ -82,6 +90,7 @@ else
                     <th>扣款帳號</th>
                     <th class="text-end">總手續費用</th>
                     <th class="text-end">預計扣款總金額</th>
+                    <th class="text-end">操作</th>
                 </tr>
             </thead>
             <tbody>
@@ -95,6 +104,9 @@ else
                         <td>@item.Account</td>
                         <td class="text-end">@item.TotalFee.ToString("N2")</td>
                         <td class="text-end fw-semibold">@item.TotalAmount.ToString("N2")</td>
+                        <td class="text-end text-nowrap">
+                            <a asp-action="Edit" asp-route-sn="@item.SN" asp-route-userId="@Model.SelectedUser.UserID" class="btn btn-outline-primary btn-sm">修改</a>
+                        </td>
                     </tr>
                 }
             </tbody>
