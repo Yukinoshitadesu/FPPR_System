@@ -117,6 +117,20 @@ public class LikeListController : Controller
         return RedirectToAction(nameof(Index), new { userId = input.UserID });
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int sn, string userId)
+    {
+        var result = await _likeListService.DeleteAsync(sn, userId);
+
+        if (result.IsSuccess)
+            TempData["SuccessMessage"] = "已刪除喜好金融商品";
+        else
+            TempData["ErrorMessage"] = result.ErrorMessage;
+
+        return RedirectToAction(nameof(Index), new { userId });
+    }
+
     private async Task<User?> FindUserAsync(string? userId)
     {
         if (string.IsNullOrWhiteSpace(userId))
