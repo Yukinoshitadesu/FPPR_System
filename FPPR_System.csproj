@@ -13,4 +13,16 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="FPPR_System.Common\FPPR_System.Common.csproj" />
+    <ProjectReference Include="FPPR_System.Business\FPPR_System.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="FPPR_System.*\**" />
+    <Content Remove="FPPR_System.*\**" />
+    <EmbeddedResource Remove="FPPR_System.*\**" />
+    <None Remove="FPPR_System.*\**" />
+  </ItemGroup>
+
 </Project>

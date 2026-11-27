@@ -12,6 +12,9 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["FPPR_System.csproj", "."]
+COPY ["FPPR_System.Common/FPPR_System.Common.csproj", "FPPR_System.Common/"]
+COPY ["FPPR_System.DataAccess/FPPR_System.DataAccess.csproj", "FPPR_System.DataAccess/"]
+COPY ["FPPR_System.Business/FPPR_System.Business.csproj", "FPPR_System.Business/"]
 RUN dotnet restore "./FPPR_System.csproj"
 COPY . .
 WORKDIR "/src/."
