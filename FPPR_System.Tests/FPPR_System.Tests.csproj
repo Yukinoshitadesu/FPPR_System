@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FPPR_System.DataAccess\FPPR_System.DataAccess.csproj" />
+    <ProjectReference Include="..\FPPR_System.Business\FPPR_System.Business.csproj" />
   </ItemGroup>
 
 </Project>
