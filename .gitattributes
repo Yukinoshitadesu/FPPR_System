@@ -1,0 +1,2 @@
+#強制指定所有 Shell Script 檔案的換行字元
+*.sh text eol=lf 
