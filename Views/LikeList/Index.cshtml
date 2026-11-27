@@ -1,0 +1,90 @@
+@model LikeListIndexViewModel
+@{
+    ViewData["Title"] = "喜好金融商品清單";
+}
+
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+    <h1 class="h3 mb-0">喜好金融商品清單</h1>
+
+    <form method="get" asp-action="Index" class="d-flex gap-2">
+        <select name="userId" class="form-select" aria-label="選擇使用者">
+            @foreach (var user in Model.Users)
+            {
+                <option value="@user.UserID" selected="@(user.UserID == Model.SelectedUser?.UserID)">
+                    @user.UserName（@user.UserID）
+                </option>
+            }
+        </select>
+        <button type="submit" class="btn btn-outline-primary text-nowrap">查詢</button>
+    </form>
+</div>
+
+@if (Model.SelectedUser == null)
+{
+    <div class="alert alert-warning">目前沒有任何使用者資料。</div>
+    return;
+}
+
+<div class="row g-3 mb-4">
+    <div class="col-12 col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="text-muted small">使用者聯絡電子信箱</div>
+                <div class="fs-5 text-break">@Model.SelectedUser.Email</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="text-muted small">總手續費用合計</div>
+                <div class="fs-5">@Model.TotalFeeSum.ToString("N2")</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <div class="text-muted small">預計扣款總金額合計</div>
+                <div class="fs-5 fw-bold text-primary">@Model.TotalAmountSum.ToString("N2")</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.LikeLists.Count == 0)
+{
+    <div class="alert alert-info">目前沒有喜好金融商品。</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>產品名稱</th>
+                    <th class="text-end">產品價格</th>
+                    <th class="text-end">手續費率</th>
+                    <th class="text-end">購買數量</th>
+                    <th>扣款帳號</th>
+                    <th class="text-end">總手續費用</th>
+                    <th class="text-end">預計扣款總金額</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.LikeLists)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td class="text-end">@item.Price.ToString("N2")</td>
+                        <td class="text-end">@((item.FeeRate * 100).ToString("0.##"))%</td>
+                        <td class="text-end">@item.PurchaseQuantity</td>
+                        <td>@item.Account</td>
+                        <td class="text-end">@item.TotalFee.ToString("N2")</td>
+                        <td class="text-end fw-semibold">@item.TotalAmount.ToString("N2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
