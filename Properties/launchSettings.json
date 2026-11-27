@@ -21,7 +21,8 @@
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
       "environmentVariables": {
-        "ASPNETCORE_URLS": "https://+:443;http://+:80"
+        "ASPNETCORE_URLS": "https://+:443;http://+:80",
+        "ConnectionStrings__Default": "Server=host.docker.internal,1433;Database=FPPR;User Id=sa;Password=Aa1!PJgSKT4NE3zsg2rTJene;TrustServerCertificate=True"
       },
       "publishAllPorts": true,
       "useSSL": true
