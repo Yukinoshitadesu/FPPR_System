@@ -26,13 +26,6 @@ coverage*.json
 coverage*.xml
 *.coverage
 
-# Local secrets / environment overrides
-appsettings.*.local.json
-*.local.json
-.env
-.env.*
-!.env.example
-
 # OS
 Thumbs.db
 Desktop.ini
