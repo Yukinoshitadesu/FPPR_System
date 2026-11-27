@@ -1,7 +1,12 @@
+using FPPR_System.Business;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddBusinessLayer(
+    builder.Configuration.GetConnectionString("Default")
+    ?? throw new InvalidOperationException("未設定 ConnectionStrings:Default"));
 
 var app = builder.Build();
 
