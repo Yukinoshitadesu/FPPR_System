@@ -3,8 +3,8 @@
 使用者可新增、查詢、修改、刪除喜好的金融商品，系統自動計算總手續費用與預計扣款總金額。
 
 ## 快速啟動
-
-只需安裝 [Docker Desktop](https://www.docker.com/products/docker-desktop/)。
+先將 .env.example 轉換成 .env檔案
+接著只需安裝 [Docker Desktop](https://www.docker.com/products/docker-desktop/)。
 
 ```bash
 docker compose up -d --build
