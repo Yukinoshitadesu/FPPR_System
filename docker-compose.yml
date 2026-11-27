@@ -1,4 +1,4 @@
-#開資料庫 -> 自動建表
+#開資料庫 -> 自動建表 -> 啟動網站
 services:
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -28,6 +28,16 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  web:
+    build: .
+    environment:
+      ConnectionStrings__Default: "Server=db;Database=FPPR;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True"
+    ports:
+      - "8080:80"
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
 
 volumes:
   mssql-data:
