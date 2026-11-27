@@ -1,9 +1,14 @@
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using FPPR_System.Business;
+using Microsoft.Extensions.WebEncoders;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<WebEncoderOptions>(options =>
+    options.TextEncoderSettings = new TextEncoderSettings(UnicodeRanges.All));
 builder.Services.AddBusinessLayer(
     builder.Configuration.GetConnectionString("Default")
     ?? throw new InvalidOperationException("未設定 ConnectionStrings:Default"));
@@ -27,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=LikeList}/{action=Index}/{id?}");
 
 app.Run();
