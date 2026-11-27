@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPPR_System", "FPPR_System.csproj", "{B46D9EE0-D6DF-4A2C-9CEC-D8D588404B19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B46D9EE0-D6DF-4A2C-9CEC-D8D588404B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46D9EE0-D6DF-4A2C-9CEC-D8D588404B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46D9EE0-D6DF-4A2C-9CEC-D8D588404B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46D9EE0-D6DF-4A2C-9CEC-D8D588404B19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D05E53E-ED66-4D19-86CC-DB26CA0F3A66}
+	EndGlobalSection
+EndGlobal
